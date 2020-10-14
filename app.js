@@ -7,8 +7,16 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog');
+const mongo = require('./credentials');
 
 var app = express();
+
+//Set up mongoose connection
+var mongoose = require('mongoose');
+console.log(mongo);
+mongoose.connect(mongo.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
