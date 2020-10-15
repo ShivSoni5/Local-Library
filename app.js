@@ -13,7 +13,6 @@ var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-console.log(mongo);
 mongoose.connect(mongo.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
